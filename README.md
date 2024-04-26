@@ -1,4 +1,4 @@
-# Mina zkApp: Sudoku
+# Mina zkApp: ZK-Bet
 
 This template uses TypeScript.
 
