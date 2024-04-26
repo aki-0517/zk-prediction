@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "deployAliases": {
+    "berkeley": {
+      "networkId": "testnet",
+      "url": "https://api.minascan.io/node/berkeley/v1/graphql",
+      "keyPath": "keys/berkeley.json",
+      "feepayerKeyPath": "/Users/onoakinobu/.cache/zkapp-cli/keys/testnet-fees.json",
+      "feepayerAlias": "testnet-fees",
+      "fee": "0.1",
+      "smartContract": "SudokuZkApp"
+    },
+    "predtestnet": {
+      "networkId": "testnet",
+      "url": "https://api.minascan.io/node/berkeley/v1/graphql",
+      "keyPath": "keys/predtestnet.json",
+      "feepayerKeyPath": "/Users/onoakinobu/.cache/zkapp-cli/keys/preddeployalias.json",
+      "feepayerAlias": "preddeployalias",
+      "fee": "0.1",
+      "smartContract": "SudokuZkApp"
+    }
+  }
+}
