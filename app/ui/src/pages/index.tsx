@@ -1,149 +1,44 @@
+import { CardProps } from "@/components/Card";
+import { Footer } from "@/components/Footer";
+import { SliderComp } from "@/components/Slider";
+import Link from "next/link";
+import { IoMdClose } from "react-icons/io";
 
-import Head from 'next/head';
-import Image from 'next/image';
-import { useEffect } from 'react';
-import GradientBG from '../components/GradientBG.js';
-import styles from '../styles/Home.module.css';
-import heroMinaLogo from '../../public/assets/hero-mina-logo.svg';
-import arrowRightSmall from '../../public/assets/arrow-right-small.svg';
-
-export default function Home() {
-  useEffect(() => {
-    (async () => {
-      const { Mina, PublicKey } = await import('o1js');
-      const { Add } = await import('../../../contracts/build/src/');
-
-      // Update this to use the address (public key) for your zkApp account.
-      // To try it out, you can try this address for an example "Add" smart contract that we've deployed to
-      // Testnet B62qkwohsqTBPsvhYE8cPZSpzJMgoKn4i1LQRuBAtVXWpaT4dgH6WoA.
-      const zkAppAddress = '';
-      // This should be removed once the zkAppAddress is updated.
-      if (!zkAppAddress) {
-        console.error(
-          'The following error is caused because the zkAppAddress has an empty string as the public key. Update the zkAppAddress with the public key for your zkApp account, or try this address for an example "Add" smart contract that we deployed to Testnet: B62qkwohsqTBPsvhYE8cPZSpzJMgoKn4i1LQRuBAtVXWpaT4dgH6WoA'
-        );
-      }
-      //const zkApp = new Add(PublicKey.fromBase58(zkAppAddress))
-    })();
-  }, []);
+export default function Detail() {
+  const markets: CardProps = {
+    imageUrl: "https://source.unsplash.com/random/800x600",
+    description: "This is a description of market 1",
+  };
 
   return (
-    <>
-      <Head>
-        <title>Mina zkApp UI</title>
-        <meta name="description" content="built with o1js" />
-        <link rel="icon" href="/assets/favicon.ico" />
-      </Head>
-      <GradientBG>
-        <main className={styles.main}>
-          <div className={styles.center}>
-            <a
-              href="https://minaprotocol.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                className={styles.logo}
-                src={heroMinaLogo}
-                alt="Mina Logo"
-                width="191"
-                height="174"
-                priority
-              />
-            </a>
-            <p className={styles.tagline}>
-              built with
-              <code className={styles.code}> o1js</code>
-            </p>
+    <div>
+      <header className="bg-white m-10">
+        <div className="flex items-center justify-center h-16">
+          {/* 左側の領域（現在は空） */}
+          <div className="flex-1"></div>
+
+          {/* 中央の領域: Linkコンポーネント */}
+          <div className="flex-1 justify-center flex"></div>
+
+          {/* 右側の領域: Searchコンポーネント */}
+          <div className="flex-1 justify-end flex">
+            <Link href="/" aria-label="トップページへ">
+              <IoMdClose />
+            </Link>
           </div>
-          <p className={styles.start}>
-            Get started by editing
-            <code className={styles.code}> src/pages/index.js</code> or <code className={styles.code}> src/pages/index.tsx</code>
-          </p>
-          <div className={styles.grid}>
-            <a
-              href="https://docs.minaprotocol.com/zkapps"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                <span>DOCS</span>
-                <div>
-                  <Image
-                    src={arrowRightSmall}
-                    alt="Mina Logo"
-                    width={16}
-                    height={16}
-                    priority
-                  />
-                </div>
-              </h2>
-              <p>Explore zkApps, how to build one, and in-depth references</p>
-            </a>
-            <a
-              href="https://docs.minaprotocol.com/zkapps/tutorials/hello-world"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                <span>TUTORIALS</span>
-                <div>
-                  <Image
-                    src={arrowRightSmall}
-                    alt="Mina Logo"
-                    width={16}
-                    height={16}
-                    priority
-                  />
-                </div>
-              </h2>
-              <p>Learn with step-by-step o1js tutorials</p>
-            </a>
-            <a
-              href="https://discord.gg/minaprotocol"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                <span>QUESTIONS</span>
-                <div>
-                  <Image
-                    src={arrowRightSmall}
-                    alt="Mina Logo"
-                    width={16}
-                    height={16}
-                    priority
-                  />
-                </div>
-              </h2>
-              <p>Ask questions on our Discord server</p>
-            </a>
-            <a
-              href="https://docs.minaprotocol.com/zkapps/how-to-deploy-a-zkapp"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                <span>DEPLOY</span>
-                <div>
-                  <Image
-                    src={arrowRightSmall}
-                    alt="Mina Logo"
-                    width={16}
-                    height={16}
-                    priority
-                  />
-                </div>
-              </h2>
-              <p>Deploy a zkApp to Testnet</p>
-            </a>
-          </div>
-        </main>
-      </GradientBG>
-    </>
+        </div>
+      </header>
+      <div className="m-10">
+        <h1 className="text-3xl font-bold">{markets.description}</h1>
+        <div className="flex-shrink-0">
+          <img
+            className="h-100 w-100 mt-10 object-contain"
+            src={markets.imageUrl}
+            alt="card image"
+          />
+        </div>
+        <Footer />
+      </div>
+    </div>
   );
 }
